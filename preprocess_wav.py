@@ -47,8 +47,6 @@ def process_class(animal, indx, audio_clips):
         if not os.path.isfile(savefile):
             plt.savefig(savefile, dpi=300, bbox_inches=0, pad_inches=0)
 
-
-
 max_num_simultaneous_processes = 5
 
 processes = []

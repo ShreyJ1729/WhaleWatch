@@ -11,7 +11,7 @@ n_fft = 2048
 hop_length = 512
 plt.axis('off')
 plt.tight_layout()
-# model = load_model("model.h5")
+model = load_model("model.h5")
 audio_fpath = os.path.join("data", "SeaOtter", "68039001.wav")
 signal, sr = librosa.load(audio_fpath, sr=16000)
 D = np.abs(librosa.stft(signal, n_fft=n_fft, hop_length=hop_length))
@@ -21,5 +21,9 @@ plt.savefig("test.jpg", dpi=100, bbox_inches=0, pad_inches=0)
 
 print(DB.shape)
 img = cv2.imread("test.jpg")
-img = cv2.resize(img, (224, 224, 3))
-print(img)
+img = cv2.resize(img, (224, 224))
+print(img.shape)
+out = model(img)
+final=np.argmax(out)
+classes=["AtlanticSpottedDolphin","BowheadWhale","ClymeneDolphin","CommonDolphin","FalseKillerWhale","Fin_FinbackWhale","Grampus_RissosDolphin","HumpbackWhale","KillerWhale","Long_FinnedPilotWhale","NorthernRightWhale","PantropicalSpottedDolphin","PacificPilotWhale","SpermWhale","SpinnerDolphin","StripedDolphin","Walrus","White_sidedDolphin"]
+print("prediction: ", classes[final])
