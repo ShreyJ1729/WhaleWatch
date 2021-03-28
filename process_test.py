@@ -7,7 +7,7 @@ import librosa
 import librosa.display
 
 
-audio_fpath = os.path.join("data", "SeaOtter", "68039001.wav")
+audio_fpath = os.path.join("data", "HumpbackWhale", "5401800A.wav")
 
 signal, sr = librosa.load(audio_fpath, sr=16000)
 
